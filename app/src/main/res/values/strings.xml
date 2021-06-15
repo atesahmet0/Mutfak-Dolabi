@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Mutfak Dolabi</string>
+    <string name="app_name_turkce">Mutfak Dolabı</string>
+    <string name="giris">Giriş</string>
+    <string name="kullanici_adi">Kullanıcı Adı</string>
+    <string name="sifre">Şifre</string>
+    <string name="sifremi_unuttum">Şifremi Unuttum</string>
+    <string name="hesabin_yok_mu_kayit_ol">Hesabın yok mu? Kayıt ol</string>
+    <string name="e_posta">E-Posta</string>
+    <string name="kayit_ol">Kayıt Ol</string>
+    <string name="hesabin_var_mi_giris_yap">Hesabın var mı? Giriş yap</string>
+    <string name="grup_olustur">Grup Oluştur</string>
+    <string name="gruba_ekle">Gruba Ekle</string>
+    <string name="grubu_sil">Grubu Sil</string>
+    <string name="iptal">Iptal</string>
+    <string name="tamam">Tamam</string>
+</resources>

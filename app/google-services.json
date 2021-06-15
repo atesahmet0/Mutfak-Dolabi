@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "474594420806",
+    "project_id": "mutfak-dolabi-prototip",
+    "storage_bucket": "mutfak-dolabi-prototip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474594420806:android:4dedd64f8a40047fed4247",
+        "android_client_info": {
+          "package_name": "com.bilsem.mutfakdolabi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474594420806-l2adhmel046lm00p26eggqk1n8dg4qrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgvsiyKpR6hY96xDBJpt9xr0P07hgxBWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474594420806-l2adhmel046lm00p26eggqk1n8dg4qrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
