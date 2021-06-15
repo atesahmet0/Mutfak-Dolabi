@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import com.bilsem.mutfakdolabi.adapters.RecyclerViewAdapterGrup
-import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.adapters.RecyclerViewAdapterGrup
 import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.repository.FirestoreRepository
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
@@ -56,49 +55,61 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
     }
 
     private fun populateAdapter() {
-        var groupsOfCurrentUserById = arrayListOf<String>()
-
+        setLoading(true)
         val reg0 = FirestoreRepository.getGroupsOfCurrentUserById(firebaseAuth.currentUser.uid).addSnapshotListener { value, error ->
             if (error != null){
                 Log.w(TAG,error)
                 return@addSnapshotListener
             }
-
             for (document in value!!.documentChanges)
                 when(document.type){
                     DocumentChange.Type.ADDED ->
                         FirestoreRepository.getGroupById(document.document.id).get().addOnCompleteListener {
-                            groupsOfCurrentUser.add(
+                            addGrupToList(
                                 Grup(
                                     it.result!!.getString(DatabaseHelper.GROUP_NAME)!!,
                                     it.result!!.id,
-                                    if (firebaseAuth.currentUser.uid.equals(it.result?.getString(DatabaseHelper.GROUP_OWNER))) true else false))
-                            recyclerViewAdapterGrup.notifyItemInserted(groupsOfCurrentUser.size)
+                                    firebaseAuth.currentUser.uid == it.result?.getString(
+                                        DatabaseHelper.GROUP_OWNER
+                                    )
+                                )
+                            )
                         }
 
                     DocumentChange.Type.REMOVED ->
-                        break
+                        deleteGrupFromListById(document.document.id)
                     DocumentChange.Type.MODIFIED ->
                         break
-        }
+                }
+            setLoading(false)
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun addGrupToList(grup: Grup) {
+        groupsOfCurrentUser.add(grup)
+        recyclerViewAdapterGrup.notifyItemInserted(groupsOfCurrentUser.size)
     }
 
+    private fun deleteGrupFromListById(grupId: String) {
+        groupsOfCurrentUser.forEachIndexed { index, grupIterate ->
+            if (grupId == grupIterate.uid) {
+                groupsOfCurrentUser.removeAt(index)
+                recyclerViewAdapterGrup.notifyItemRemoved(index)
+                return
+            }
+        }
+    }
 
-    private fun setLoading(isLoading: Boolean){
+    private fun setLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         recyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE
 
     }
-    private fun grupEkleDialog(){
-        val fragment= GrupEkleFragment()
-        fragment.isCancelable= false
-        fragment.show(childFragmentManager,GrupEkleFragment.TAG)
+
+    private fun grupEkleDialog() {
+        val fragment = GrupEkleFragment()
+        fragment.isCancelable = false
+        fragment.show(childFragmentManager, GrupEkleFragment.TAG)
 
     }
 
