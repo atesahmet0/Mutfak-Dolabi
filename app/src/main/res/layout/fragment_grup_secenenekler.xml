@@ -1,115 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp">
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <Button
-        android:id="@+id/buttonGrupSeceneklerKisiEkle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/gruba_ekle"
-        android:theme="@style/Widget.MaterialComponents.Button"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd"
-        app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart"
-        app:layout_constraintTop_toTopOf="@+id/guidelineGrupSeceneklerTop" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-
-    <Button
-        android:id="@+id/buttonGrupSeceneklerGrubuSil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/grubu_sil"
-        android:theme="@style/Widget.MaterialComponents.Button"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd"
-        app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGrupSeceneklerKisiEkle" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGrupSeceneklerStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGrupSeceneklerEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGrupSeceneklerTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.04" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGrupSeceneklerStart2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGrupSeceneklerEnd2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <Button
-        android:id="@+id/buttonGrupSeceneklerIptal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/iptal"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd2"
-        app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart2"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGrupSeceneklerGrubuSil" />
-
-    <Button
-        android:id="@+id/buttonGrupSeceneklerKisiEkleTamam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tamam"
-        android:layout_marginTop="4dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutGrupSeceneklerKisiEkle"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutGrupSeceneklerKisiEkle"/>
-    <Button
-        android:id="@+id/buttonGrupSeceneklerKisiEkleIptal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/iptal"
-        android:visibility="gone"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        app:layout_constraintEnd_toStartOf="@id/buttonGrupSeceneklerKisiEkleTamam"
-        app:layout_constraintTop_toTopOf="@id/buttonGrupSeceneklerKisiEkleTamam"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutGrupSeceneklerKisiEkle"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:errorEnabled="true"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineGrupSeceneklerTop">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/buttonGrupSeceneklerKisiEkle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:hint="E-posta" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/gruba_ekle"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd"
+            app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart"
+            app:layout_constraintTop_toTopOf="@+id/guidelineGrupSeceneklerTop" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/buttonGrupSeceneklerGrubuSil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/grubu_sil"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd"
+            app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGrupSeceneklerKisiEkle" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineGrupSeceneklerStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineGrupSeceneklerEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineGrupSeceneklerTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineGrupSeceneklerStart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineGrupSeceneklerEnd2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <Button
+            android:id="@+id/buttonGrupSeceneklerIptal"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/iptal"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineGrupSeceneklerEnd2"
+            app:layout_constraintStart_toStartOf="@+id/guidelineGrupSeceneklerStart2"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGrupSeceneklerGrubuSil" />
+
+        <Button
+            android:id="@+id/buttonGrupSeceneklerKisiEkleTamam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Tamam"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayoutGrupSeceneklerKisiEkle"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutGrupSeceneklerKisiEkle" />
+
+        <Button
+            android:id="@+id/buttonGrupSeceneklerKisiEkleIptal"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iptal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/buttonGrupSeceneklerKisiEkleTamam"
+            app:layout_constraintTop_toTopOf="@id/buttonGrupSeceneklerKisiEkleTamam" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutGrupSeceneklerKisiEkle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineGrupSeceneklerTop">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-posta"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,6 +1,9 @@
 package com.bilsem.mutfakdolabi.fragments
 
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -81,19 +84,24 @@ class GrupEkleFragment : DialogFragment() {
         for (i in buttons){
             i.isClickable=false
         }
-        isCancelable=false
+        dialog?.setCancelable(false)
     }
     fun enableButtons(buttons: List<Button>){
         for (i in buttons){
             i.isClickable=true
         }
-        isCancelable=true
+        dialog?.setCancelable(true)
     }
 
     override fun onStart() {
         super.onStart()
-        dialog!!.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
-
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        val insetDrawable = InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20)
+        dialog?.window?.setBackgroundDrawable(insetDrawable)
+        dialog?.setCancelable(true)
     }
 
     override fun onDismiss(dialog: DialogInterface) {

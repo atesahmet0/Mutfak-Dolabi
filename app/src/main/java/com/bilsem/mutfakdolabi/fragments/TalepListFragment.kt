@@ -39,11 +39,6 @@ class TalepListFragment : Fragment() {
 
         view.recyclerViewOrderList.layoutManager = LinearLayoutManager(context)
         view.recyclerViewOrderList.adapter = adapterRecyclerViewAdapterOrder
-        for (i in 1..5) {
-            orderList.add(Order("Ev"))
-            adapterRecyclerViewAdapterOrder.notifyItemInserted(i)
-        }
-
 
     }
 

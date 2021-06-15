@@ -1,6 +1,9 @@
 package com.bilsem.mutfakdolabi.fragments
 
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -9,9 +12,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.objects.Grup
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,9 +34,14 @@ class GrupDuzenleFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        dialog?.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT)
-
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        val insetDrawable = InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20)
+        dialog?.window?.setBackgroundDrawable(insetDrawable)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,7 +94,7 @@ class GrupDuzenleFragment : DialogFragment() {
         listOfViewsKisiEkle.get(1).setOnClickListener {
             disableViews(listOfViewsKisiEkle)
             val textInputLayout = listOfViewsKisiEkle.get(0) as TextInputLayout
-            val epostaToAddGroup = textInputLayout?.editText?.text.toString().trim()
+            val epostaToAddGroup = textInputLayout.editText?.text.toString().trim()
 
             textInputLayout.error=null
             if (!Patterns.EMAIL_ADDRESS.matcher(epostaToAddGroup).matches()||epostaToAddGroup.length==8){

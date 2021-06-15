@@ -19,7 +19,7 @@
         android:id="@+id/recyclerViewToplulukGroupsList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonToplulukFragmentAddGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -35,7 +35,7 @@
         android:background="?attr/dividerHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewToplulukGroupsList" />
+        app:layout_constraintBottom_toTopOf="@id/buttonToplulukFragmentAddGroup" />
 
     <Button
         android:id="@+id/buttonToplulukFragmentAddGroup"
@@ -45,8 +45,8 @@
         android:layout_marginBottom="16dp"
         android:text="@string/grup_olustur"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewToplulukGroupsList"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewToplulukGroupsList" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewToglulukFragmentNothingToShowHere"
