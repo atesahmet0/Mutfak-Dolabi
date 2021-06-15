@@ -28,7 +28,7 @@ class RecyclerViewAdapterOrder(val ordersList: List<Order>) :
     }
 
     override fun onBindViewHolder(holder: RecyclerViewAdapterOrderViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bindView(ordersList.get(position))
     }
 
     override fun getItemCount(): Int {
