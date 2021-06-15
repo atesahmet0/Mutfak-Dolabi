@@ -1,4 +1,4 @@
-package com.bilsem.mutfakdolabi.Objeler
+package com.bilsem.mutfakdolabi.objects
 
 import kotlinx.serialization.Serializable
 

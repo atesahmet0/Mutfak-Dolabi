@@ -1,20 +1,14 @@
-package com.bilsem.mutfakdolabi.Activityler
+package com.bilsem.mutfakdolabi.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.bilsem.mutfakdolabi.Fragmentler.TalepListFragment
-import com.bilsem.mutfakdolabi.Fragmentler.ToplulukFragment
+import com.bilsem.mutfakdolabi.fragments.TalepListFragment
 import com.bilsem.mutfakdolabi.R
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     companion object{

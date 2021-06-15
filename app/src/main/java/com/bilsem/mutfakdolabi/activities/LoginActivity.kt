@@ -1,4 +1,4 @@
-package com.bilsem.mutfakdolabi.Activityler
+package com.bilsem.mutfakdolabi.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

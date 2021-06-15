@@ -1,15 +1,12 @@
-package com.bilsem.mutfakdolabi.Fragmentler
+package com.bilsem.mutfakdolabi.fragments
 
-import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.annotation.Keep
 import androidx.fragment.app.DialogFragment
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.helper.DatabaseHelper

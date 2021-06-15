@@ -1,7 +1,6 @@
-package com.bilsem.mutfakdolabi.Fragmentler
+package com.bilsem.mutfakdolabi.fragments
 
 import android.content.DialogInterface
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -10,10 +9,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.bilsem.mutfakdolabi.Objeler.Grup
+import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.helper.DatabaseHelper
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -1,23 +1,17 @@
-package com.bilsem.mutfakdolabi.Fragmentler
+package com.bilsem.mutfakdolabi.fragments
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bilsem.mutfakdolabi.Adapterler.RecyclerViewAdapterGrup
-import com.bilsem.mutfakdolabi.Objeler.Grup
-import com.bilsem.mutfakdolabi.Objeler.Kisi
+import com.bilsem.mutfakdolabi.adapters.RecyclerViewAdapterGrup
+import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.R
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
 import com.bilsem.mutfakdolabi.repository.FirestoreRepository
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.fragment_talep_list.view.*
 

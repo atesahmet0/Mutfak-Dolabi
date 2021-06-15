@@ -1,11 +1,10 @@
-package com.bilsem.mutfakdolabi.Adapterler
+package com.bilsem.mutfakdolabi.adapters
 
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bilsem.mutfakdolabi.Objeler.Grup
+import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.R
 import kotlinx.android.synthetic.main.recyclerview_grup_item.view.*
 

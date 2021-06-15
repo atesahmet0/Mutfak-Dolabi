@@ -1,13 +1,11 @@
-package com.bilsem.mutfakdolabi.Activityler
+package com.bilsem.mutfakdolabi.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import com.bilsem.mutfakdolabi.Fragmentler.GrupEkleFragment
-import com.bilsem.mutfakdolabi.Fragmentler.ToplulukFragment
+import com.bilsem.mutfakdolabi.fragments.ToplulukFragment
 import com.bilsem.mutfakdolabi.R
-import kotlinx.android.synthetic.main.activity_ayarlar_activty.*
 
 class AyarlarActivty : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
