@@ -3,8 +3,9 @@ package com.bilsem.mutfakdolabi.adapters
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bilsem.mutfakdolabi.objects.Order
 
-class RecyclerViewAdepterOrder :
+class RecyclerViewAdepterOrder(ordersList: List<Order>) :
     RecyclerView.Adapter<RecyclerViewAdepterOrder.RecyclerViewAdapterOrderViewHolder>() {
 
     inner class RecyclerViewAdapterOrderViewHolder(itemView: View) :
