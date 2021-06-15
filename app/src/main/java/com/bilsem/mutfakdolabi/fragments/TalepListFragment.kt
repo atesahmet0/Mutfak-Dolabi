@@ -35,8 +35,8 @@ class TalepListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.recyclerViewTalepListesi.layoutManager=LinearLayoutManager(context)
-        view.recyclerViewTalepListesi.adapter = adapter
+        view.recyclerViewOrderList.layoutManager = LinearLayoutManager(context)
+        view.recyclerViewOrderList.adapter = adapter
 
 
     }
