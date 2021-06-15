@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Burada gostericek bir sey yok!"
+        android:text="@string/burada_gostericek_bir_sey_yok"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@id/buttonToplulukFragmentAddGroup"
         app:layout_constraintEnd_toEndOf="parent"
