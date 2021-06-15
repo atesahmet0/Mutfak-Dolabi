@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/progressIndicatorLinearToplulukIsLoading"
+        android:id="@+id/progressIndicatorLinearToplulukFragmentIsLoading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true"
@@ -16,23 +16,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewGrup"
+        android:id="@+id/recyclerViewToplulukGroupsList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonToplulukAddGrup"
+        app:layout_constraintBottom_toTopOf="@+id/buttonToplulukFragmentAddGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonToplulukAddGrup"
+        android:id="@+id/buttonToplulukFragmentAddGroup"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/grup_olustur"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewGrup"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewGrup" />
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewToplulukGroupsList"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewToplulukGroupsList" />
+
+    <TextView
+        android:id="@+id/textViewToglulukFragmentNothingToShowHere"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Burada gostericek bir sey yok!"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@id/buttonToplulukFragmentAddGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

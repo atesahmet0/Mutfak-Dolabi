@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,72 +18,82 @@ import com.bilsem.mutfakdolabi.repository.FirestoreRepository
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.fragment_topluluk.view.*
 
-class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
+class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener {
 
-    companion object{
-        const val TAG="TOPLULUKFRAGMENT"
+    companion object {
+        const val TAG = "TOPLULUKFRAGMENT"
     }
 
     private var groupsOfCurrentUser = arrayListOf<Grup>()
     private var recyclerViewAdapterGrup = RecyclerViewAdapterGrup(groupsOfCurrentUser)
-    private var  firebaseAuth = FirebaseAuth.getInstance()
+    private var firebaseAuth = FirebaseAuth.getInstance()
+
+    private val registrationsToRemoveOnStop = arrayListOf<ListenerRegistration>()
 
     private lateinit var progressBar: LinearProgressIndicator
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewGroupsOfCurrentUser: RecyclerView
+    private lateinit var textViewNothingToShowHere: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =inflater.inflate(R.layout.fragment_topluluk,container,false)
+        val view = inflater.inflate(R.layout.fragment_topluluk, container, false)
 
-        progressBar = view.progressIndicatorLinearToplulukIsLoading
-        recyclerView=view.recyclerViewGrup
+        progressBar = view.progressIndicatorLinearToplulukFragmentIsLoading
+        recyclerViewGroupsOfCurrentUser = view.recyclerViewToplulukGroupsList
+        textViewNothingToShowHere = view.textViewToglulukFragmentNothingToShowHere
 
-        view.buttonToplulukAddGrup.setOnClickListener {
+        view.buttonToplulukFragmentAddGroup.setOnClickListener {
             grupEkleDialog()
         }
 
-        recyclerViewAdapterGrup.mGrupAdapterItemClickListener=settingsClicked
+        recyclerViewAdapterGrup.mGrupAdapterItemClickListener = settingsClicked
 
-        view.recyclerViewGrup.layoutManager=LinearLayoutManager(context)
-        view.recyclerViewGrup.adapter=recyclerViewAdapterGrup
+        view.recyclerViewToplulukGroupsList.layoutManager = LinearLayoutManager(context)
+        view.recyclerViewToplulukGroupsList.adapter = recyclerViewAdapterGrup
         populateAdapter()
         return view
     }
 
     private fun populateAdapter() {
-        setLoading(true)
+        setSituationOfFragment(Situation.LOADING)
         val reg0 = FirestoreRepository.getGroupsOfCurrentUserById(firebaseAuth.currentUser.uid).addSnapshotListener { value, error ->
-            if (error != null){
-                Log.w(TAG,error)
+            if (error != null) {
+                Log.w(TAG, error)
                 return@addSnapshotListener
             }
-            for (document in value!!.documentChanges)
-                when(document.type){
-                    DocumentChange.Type.ADDED ->
-                        FirestoreRepository.getGroupById(document.document.id).get().addOnCompleteListener {
-                            addGrupToList(
-                                Grup(
-                                    it.result!!.getString(DatabaseHelper.GROUP_NAME)!!,
-                                    it.result!!.id,
-                                    firebaseAuth.currentUser.uid == it.result?.getString(
-                                        DatabaseHelper.GROUP_OWNER
+            if (value!!.isEmpty) setSituationOfFragment(Situation.EMPTY) else setSituationOfFragment(
+                Situation.LOADED
+            )
+            for (document in value.documentChanges)
+                when (document.type) {
+                    DocumentChange.Type.ADDED -> {
+                        FirestoreRepository.getGroupById(document.document.id).get()
+                            .addOnCompleteListener {
+                                addGrupToList(
+                                    Grup(
+                                        it.result!!.getString(DatabaseHelper.GROUP_NAME)!!,
+                                        it.result!!.id,
+                                        firebaseAuth.currentUser.uid == it.result?.getString(
+                                            DatabaseHelper.GROUP_OWNER
+                                        )
                                     )
                                 )
-                            )
-                        }
+                            }
+                    }
 
                     DocumentChange.Type.REMOVED ->
                         deleteGrupFromListById(document.document.id)
                     DocumentChange.Type.MODIFIED ->
                         break
                 }
-            setLoading(false)
         }
+        registrationsToRemoveOnStop.add(reg0)
     }
 
     private fun addGrupToList(grup: Grup) {
@@ -100,10 +111,25 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
         }
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-        recyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE
+    private fun setSituationOfFragment(situation: Situation) {
+        when (situation) {
+            Situation.LOADING -> {
+                progressBar.visibility = View.VISIBLE
+                recyclerViewGroupsOfCurrentUser.visibility = View.GONE
+                textViewNothingToShowHere.visibility = View.GONE
+            }
+            Situation.EMPTY -> {
+                progressBar.visibility = View.GONE
+                recyclerViewGroupsOfCurrentUser.visibility = View.GONE
+                textViewNothingToShowHere.visibility = View.VISIBLE
+            }
+            Situation.LOADED -> {
+                progressBar.visibility = View.GONE
+                recyclerViewGroupsOfCurrentUser.visibility = View.VISIBLE
+                textViewNothingToShowHere.visibility = View.GONE
+            }
 
+        }
     }
 
     private fun grupEkleDialog() {
@@ -113,17 +139,28 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
 
     }
 
-    val settingsClicked = object : RecyclerViewAdapterGrup.grupAdapterItemClickListener{
+    val settingsClicked = object : RecyclerViewAdapterGrup.grupAdapterItemClickListener {
         override fun onItemClick(view: View, position: Int, dataList: List<Grup>) {
             val fragment = GrupDuzenleFragment()
             val bundle = Bundle()
-            bundle.putSerializable(GrupDuzenleFragment.CURRENT_GROUP,dataList.get(position))
-            fragment.arguments=bundle
-            fragment.show(childFragmentManager,GrupDuzenleFragment.TAG)
+            bundle.putSerializable(GrupDuzenleFragment.CURRENT_GROUP, dataList.get(position))
+            fragment.arguments = bundle
+            fragment.show(childFragmentManager, GrupDuzenleFragment.TAG)
         }
     }
-    override fun onDismiss(dialog: DialogInterface?) {
 
+    override fun onDismiss(dialog: DialogInterface?) {}
+
+    private enum class Situation {
+        LOADING,
+        LOADED,
+        EMPTY
     }
 
+    override fun onStop() {
+        super.onStop()
+        registrationsToRemoveOnStop.forEach {
+            it.remove()
+        }
+    }
 }
