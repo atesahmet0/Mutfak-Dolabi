@@ -24,4 +24,7 @@ object FirestoreRepository {
     fun getGroupsByIdList(groupIds: List<String>): Query{
         return groupsReference.whereIn(FieldPath.documentId(), groupIds)
     }
+    fun getGroupById(groupId: String): DocumentReference {
+        return groupsReference.document(groupId)
+    }
 }

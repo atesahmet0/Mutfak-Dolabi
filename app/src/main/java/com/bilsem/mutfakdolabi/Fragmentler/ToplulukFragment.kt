@@ -31,7 +31,7 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
     }
 
     private var groupsOfCurrentUser = arrayListOf<Grup>()
-    private var recyclerViewAdapterGrup = RecyclerViewAdapterGrup(grupList)
+    private var recyclerViewAdapterGrup = RecyclerViewAdapterGrup(groupsOfCurrentUser)
     private var  firebaseAuth = FirebaseAuth.getInstance()
 
     private lateinit var progressBar: LinearProgressIndicator
@@ -60,18 +60,26 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener{
     }
 
     private fun populateAdapter() {
-        var registrationGroupsOfCurrentUser : ListenerRegistration
         var groupsOfCurrentUserById = arrayListOf<String>()
-        FirestoreRepository.getGroupsOfCurrentUserById(firebaseAuth.currentUser.uid).addSnapshotListener { value, error ->
+
+        val reg0 = FirestoreRepository.getGroupsOfCurrentUserById(firebaseAuth.currentUser.uid).addSnapshotListener { value, error ->
             if (error != null){
                 Log.w(TAG,error)
                 return@addSnapshotListener
             }
-            //TODO("burada kalmistik")
+
             for (document in value!!.documentChanges)
                 when(document.type){
                     DocumentChange.Type.ADDED ->
-                        break
+                        FirestoreRepository.getGroupById(document.document.id).get().addOnCompleteListener {
+                            groupsOfCurrentUser.add(
+                                Grup(
+                                    it.result!!.getString(DatabaseHelper.GROUP_NAME)!!,
+                                    it.result!!.id,
+                                    if (firebaseAuth.currentUser.uid.equals(it.result?.getString(DatabaseHelper.GROUP_OWNER))) true else false))
+                            recyclerViewAdapterGrup.notifyItemInserted(groupsOfCurrentUser.size)
+                        }
+
                     DocumentChange.Type.REMOVED ->
                         break
                     DocumentChange.Type.MODIFIED ->
