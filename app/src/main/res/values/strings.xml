@@ -15,4 +15,6 @@
     <string name="iptal">Iptal</string>
     <string name="tamam">Tamam</string>
     <string name="burada_gostericek_bir_sey_yok">Burada gostericek bir sey yok!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
