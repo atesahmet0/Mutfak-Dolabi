@@ -1,20 +1,17 @@
 package com.bilsem.mutfakdolabi.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.bilsem.mutfakdolabi.fragments.TalepListFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.fragments.TalepListFragment
+import com.bilsem.mutfakdolabi.fragments.ToplulukFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
-    companion object{
-        const val AYARLAR_FRAGMENT="fragment"
-        const val AYARLAR_FRAGMENT_TOPLULUK="topluluk"
-    }
 
     lateinit var mauth: FirebaseAuth
 
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.action_topluluk ->{
                 intent = Intent(this,AyarlarActivty::class.java)
-                intent.putExtra(AYARLAR_FRAGMENT, AYARLAR_FRAGMENT_TOPLULUK)
+                intent.putExtra(AyarlarActivty.KEY_FRAGMENT_TO_PUT, ToplulukFragment.TAG)
                 startActivity(intent)
             }
             R.id.action_cikis ->{

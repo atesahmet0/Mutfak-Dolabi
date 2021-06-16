@@ -11,7 +11,7 @@
         android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/floatingActionButtonFragmentTalepListTalepEkle"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:contentDescription="@null"

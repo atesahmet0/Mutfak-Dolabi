@@ -22,7 +22,6 @@ import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.android.synthetic.main.fragment_topluluk.view.*
 
 class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener {
-
     companion object {
         const val TAG = "TOPLULUKFRAGMENT"
     }

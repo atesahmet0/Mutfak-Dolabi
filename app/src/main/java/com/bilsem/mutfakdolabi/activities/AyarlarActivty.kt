@@ -1,13 +1,18 @@
 package com.bilsem.mutfakdolabi.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.bilsem.mutfakdolabi.fragments.ToplulukFragment
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.fragments.TalepEkleFragment
+import com.bilsem.mutfakdolabi.fragments.ToplulukFragment
 
 class AyarlarActivty : AppCompatActivity() {
+    companion object {
+        const val KEY_FRAGMENT_TO_PUT = "FRAGMENTTOPUT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ayarlar_activty)
@@ -17,10 +22,13 @@ class AyarlarActivty : AppCompatActivity() {
     }
 
     private fun setFragment() {
-        val fragmentstr= intent.extras?.get(MainActivity.AYARLAR_FRAGMENT)
-        when(fragmentstr){
-            MainActivity.AYARLAR_FRAGMENT_TOPLULUK -> {
+        val fragmentstr = intent.extras?.getString(MainActivity.AYARLAR_FRAGMENT)
+        when (fragmentstr) {
+            ToplulukFragment.TAG -> {
                 setLayout(ToplulukFragment())
+            }
+            TalepEkleFragment.TAG -> {
+                setLayout(TalepEkleFragment())
             }
         }
     }
