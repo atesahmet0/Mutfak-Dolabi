@@ -22,7 +22,7 @@ class AyarlarActivty : AppCompatActivity() {
     }
 
     private fun setFragment() {
-        val fragmentstr = intent.extras?.getString(MainActivity.AYARLAR_FRAGMENT)
+        val fragmentstr = intent.extras?.getString(KEY_FRAGMENT_TO_PUT)
         when (fragmentstr) {
             ToplulukFragment.TAG -> {
                 setLayout(ToplulukFragment())
