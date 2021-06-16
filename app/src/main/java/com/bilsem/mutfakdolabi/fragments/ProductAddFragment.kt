@@ -1,0 +1,38 @@
+package com.bilsem.mutfakdolabi.fragments
+
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import com.bilsem.mutfakdolabi.R
+
+class ProductAddFragment : DialogFragment() {
+    companion object {
+        const val TAG = "PRODUCTADDDIALOGFRAGMENT"
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        val insetDrawable = InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20)
+        dialog?.window?.setBackgroundDrawable(insetDrawable)
+        dialog?.setCancelable(true)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_product_add, container, false)
+        return view
+    }
+}

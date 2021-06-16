@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Piece"
+        android:title="Adet" />
+    <item
+        android:id="@+id/KG"
+        android:title="Kg" />
+    <item
+        android:id="@+id/Litre"
+        android:title="Litre" />
+    <item
+        android:id="@+id/GRAMS"
+        android:title="Gram" />
+
+</menu>

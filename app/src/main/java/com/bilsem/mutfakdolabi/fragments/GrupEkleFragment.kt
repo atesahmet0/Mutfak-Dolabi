@@ -30,35 +30,44 @@ class GrupEkleFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_grup_ekle,container,false)
-        return view
-    }
+        val view = inflater.inflate(R.layout.fragment_grup_ekle, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         view.buttonFragmentGrupEkleIptal.setOnClickListener {
             dialog!!.dismiss()
         }
         view.buttonFragmentGrupEkleTamam.setOnClickListener {
-            disableButtons(listOf(view.buttonFragmentGrupEkleTamam,view.buttonFragmentGrupEkleIptal))
+            disableButtons(
+                listOf(
+                    view.buttonFragmentGrupEkleTamam,
+                    view.buttonFragmentGrupEkleIptal
+                )
+            )
             val isim = view.textInputLayoutFragmentGrupEkleIsim.editText!!.text.toString()
             grupEkle(isim)
-            listOf(view.buttonFragmentGrupEkleTamam,view.buttonFragmentGrupEkleIptal)
+            listOf(view.buttonFragmentGrupEkleTamam, view.buttonFragmentGrupEkleIptal)
         }
+        return view
     }
 
-
-    fun grupEkle(isim: String){
+    private fun grupEkle(isim: String) {
         val database = FirebaseFirestore.getInstance()
         val mauth = FirebaseAuth.getInstance()
         database.collection(DatabaseHelper.GROUPS).document().apply {
-            this.set(mapOf(DatabaseHelper.GROUP_NAME to isim,DatabaseHelper.DATE to System.currentTimeMillis()/1000,DatabaseHelper.GROUP_OWNER to mauth.currentUser.uid)).addOnSuccessListener {
+            this.set(
+                mapOf(
+                    DatabaseHelper.GROUP_NAME to isim,
+                    DatabaseHelper.DATE to System.currentTimeMillis() / 1000,
+                    DatabaseHelper.GROUP_OWNER to mauth.currentUser.uid
+                )
+            ).addOnSuccessListener {
                 this.collection(DatabaseHelper.GROUP_MEMBERS).document(mauth.currentUser.uid).set(
-                    mapOf(DatabaseHelper.GROUP_MEMBER_RANK to DatabaseHelper.GROUP_MEMBER_RANK_OWNER)).addOnSuccessListener {
-                    database.collection(DatabaseHelper.USERS).document(mauth.currentUser.uid).
-                    collection(DatabaseHelper.USER_MEMBER_OF).
-                    document(id).set(mapOf(DatabaseHelper.DATE to System.currentTimeMillis()/1000)).addOnSuccessListener {
-                        islemBasarili()
+                    mapOf(DatabaseHelper.GROUP_MEMBER_RANK to DatabaseHelper.GROUP_MEMBER_RANK_OWNER)
+                ).addOnSuccessListener {
+                    database.collection(DatabaseHelper.USERS).document(mauth.currentUser.uid)
+                        .collection(DatabaseHelper.USER_MEMBER_OF).document(id)
+                        .set(mapOf(DatabaseHelper.DATE to System.currentTimeMillis() / 1000))
+                        .addOnSuccessListener {
+                            islemBasarili()
                     }.addOnFailureListener {
                         islemBasarisiz(it.toString())
                     }
@@ -70,25 +79,27 @@ class GrupEkleFragment : DialogFragment() {
     }
 
 
-    fun islemBasarili(){
-        Toast.makeText(activity,ISLEM_BASARILI,Toast.LENGTH_SHORT).show()
+    private fun islemBasarili() {
+        Toast.makeText(activity, ISLEM_BASARILI, Toast.LENGTH_SHORT).show()
         dialog!!.dismiss()
     }
-    fun islemBasarisiz(str: String){
-        Toast.makeText(activity,str,Toast.LENGTH_SHORT).show()
+
+    private fun islemBasarisiz(str: String) {
+        Toast.makeText(activity, str, Toast.LENGTH_SHORT).show()
         dialog!!.dismiss()
     }
 
 
-    fun disableButtons(buttons: List<Button>){
-        for (i in buttons){
-            i.isClickable=false
+    private fun disableButtons(buttons: List<Button>) {
+        for (i in buttons) {
+            i.isClickable = false
         }
         dialog?.setCancelable(false)
     }
-    fun enableButtons(buttons: List<Button>){
-        for (i in buttons){
-            i.isClickable=true
+
+    private fun enableButtons(buttons: List<Button>) {
+        for (i in buttons) {
+            i.isClickable = true
         }
         dialog?.setCancelable(true)
     }

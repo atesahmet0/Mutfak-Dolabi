@@ -20,4 +20,5 @@
     <string name="baslik">Başlık</string>
     <string name="aciklama">Açıklama</string>
     <string name="istek_urun_ekle">İstek Ürün Ekle</string>
+    <string name="isim">İsim</string>
 </resources>
