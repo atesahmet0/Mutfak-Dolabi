@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.TalepEkleFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutFragmentTalepEkleTitleOfTalep"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
-        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
-        app:layout_constraintTop_toTopOf="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalTop">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/baslik"
-            android:maxLength="64"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -51,4 +35,41 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.98" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutFragmentTalepEkleDescriptionOfTalep"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFragmentTalepEkleTitleOfTalep">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/aciklama"
+            android:maxLines="4"
+            android:minLines="4" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutFragmentTalepEkleTitleOfTalep"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toTopOf="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalTop">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/baslik"
+            android:maxLength="64"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
