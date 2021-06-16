@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.DialogFragment
 import com.bilsem.mutfakdolabi.R
+import kotlinx.android.synthetic.main.fragment_product_add.view.*
 
 class ProductAddFragment : DialogFragment() {
     companion object {
@@ -24,7 +27,7 @@ class ProductAddFragment : DialogFragment() {
         )
         val insetDrawable = InsetDrawable(ColorDrawable(Color.TRANSPARENT), 20)
         dialog?.window?.setBackgroundDrawable(insetDrawable)
-        dialog?.setCancelable(true)
+
     }
 
     override fun onCreateView(
@@ -33,6 +36,11 @@ class ProductAddFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_add, container, false)
+        val items = listOf("Adet", "Kg", "Litre", "Gram")
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+        (view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText as? AutoCompleteTextView)?.setAdapter(
+            adapter
+        )
         return view
     }
 }
