@@ -7,23 +7,25 @@ data class Product(
     val title: String,
     val amountsToGet: Int,
     val currentAmounts: Int = 0,
-    val measurementUnit: measurementUnit
-)
-
-enum class measurementUnit {
-    GRAMS {
-        override fun toString(): String {
-            return "Gram"
-        }
-    },
-    LITERS {
-        override fun toString(): String {
-            return "Litre"
-        }
-    },
-    PIECE {
-        override fun toString(): String {
-            return "Adet"
+    val measurementUnit: MeasurementUnit
+) {
+    enum class MeasurementUnit {
+        GRAMS {
+            override fun toString(): String {
+                return "Gram"
+            }
+        },
+        LITERS {
+            override fun toString(): String {
+                return "Litre"
+            }
+        },
+        PIECE {
+            override fun toString(): String {
+                return "Adet"
+            }
         }
     }
 }
+
+
