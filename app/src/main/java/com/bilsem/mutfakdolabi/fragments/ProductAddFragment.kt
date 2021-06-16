@@ -41,6 +41,7 @@ class ProductAddFragment : DialogFragment() {
         (view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText as? AutoCompleteTextView)?.setAdapter(
             adapter
         )
+        view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
         return view
     }
 }
