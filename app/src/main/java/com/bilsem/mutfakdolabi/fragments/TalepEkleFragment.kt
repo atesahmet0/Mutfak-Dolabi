@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bilsem.mutfakdolabi.R
+import kotlinx.android.synthetic.main.fragment_talep_ekle.view.*
 
 class TalepEkleFragment : Fragment() {
 
@@ -18,8 +19,13 @@ class TalepEkleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_talep_ekle, container, false)
+        val view = inflater.inflate(R.layout.fragment_talep_ekle, container, false)
+
+        view.buttonFragmentTalepEkleAddProduct.setOnClickListener { button ->
+
+        }
+        return view
     }
+
 
 }
