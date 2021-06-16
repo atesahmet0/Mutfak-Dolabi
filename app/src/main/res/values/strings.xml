@@ -21,4 +21,6 @@
     <string name="aciklama">Açıklama</string>
     <string name="istek_urun_ekle">İstek Ürün Ekle</string>
     <string name="isim">İsim</string>
+    <string name="birim">Birim</string>
+    <string name="miktar">Miktar</string>
 </resources>
