@@ -133,7 +133,6 @@ class ToplulukFragment : Fragment(), DialogInterface.OnDismissListener {
 
     private fun grupEkleDialog() {
         val fragment = GrupEkleFragment()
-        fragment.isCancelable = false
         fragment.show(childFragmentManager, GrupEkleFragment.TAG)
 
     }

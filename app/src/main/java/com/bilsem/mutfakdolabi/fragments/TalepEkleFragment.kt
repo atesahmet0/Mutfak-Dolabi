@@ -22,7 +22,8 @@ class TalepEkleFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_talep_ekle, container, false)
 
         view.buttonFragmentTalepEkleAddProduct.setOnClickListener { button ->
-
+            val fragment = ProductAddFragment()
+            fragment.show(childFragmentManager, ProductAddFragment.TAG)
         }
         return view
     }
