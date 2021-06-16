@@ -13,14 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalTop"
@@ -52,6 +52,7 @@
             android:gravity="top"
             android:hint="@string/aciklama"
             android:maxLines="4"
+            android:maxLength="255"
             android:minLines="4" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,4 +73,52 @@
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFragmentTalepEkleProductList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFragmentTalepEkleTamam"
+        app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFragmentTalepEkleAddProduct" />
+
+    <Button
+        android:id="@+id/buttonFragmentTalepEkleAddProduct"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Istek Urun Ekle"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFragmentTalepEkleDescriptionOfTalep" />
+
+    <Button
+        android:id="@+id/buttonFragmentTalepEkleTamam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tamam"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="?attr/dividerHorizontal"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewFragmentTalepEkleProductList"
+        app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/dividerHorizontal"
+        app:layout_constraintBottom_toTopOf="@id/buttonFragmentTalepEkleAddProduct"
+        app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutFragmentTalepEkleDescriptionOfTalep" />
 </androidx.constraintlayout.widget.ConstraintLayout>
