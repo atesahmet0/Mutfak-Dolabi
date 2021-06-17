@@ -12,7 +12,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bilsem.mutfakdolabi.R
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.helpers.DatabaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_grup_ekle.view.*

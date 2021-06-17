@@ -46,6 +46,7 @@ class ProductAddFragment : DialogFragment() {
             adapter
         )
         view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
+
         return view
     }
 

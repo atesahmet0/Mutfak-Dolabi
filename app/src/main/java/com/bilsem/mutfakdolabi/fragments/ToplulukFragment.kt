@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.adapters.RecyclerViewAdapterGrup
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.helpers.DatabaseHelper
 import com.bilsem.mutfakdolabi.objects.Grup
 import com.bilsem.mutfakdolabi.repository.FirestoreRepository
 import com.google.android.material.progressindicator.LinearProgressIndicator

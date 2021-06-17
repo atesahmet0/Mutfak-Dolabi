@@ -13,7 +13,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bilsem.mutfakdolabi.R
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.helpers.DatabaseHelper
 import com.bilsem.mutfakdolabi.objects.Grup
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth

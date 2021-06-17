@@ -1,4 +1,4 @@
-package com.bilsem.mutfakdolabi.helper
+package com.bilsem.mutfakdolabi.helpers
 
 class DatabaseHelper {
     companion object{

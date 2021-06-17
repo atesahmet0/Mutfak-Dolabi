@@ -1,8 +1,11 @@
 package com.bilsem.mutfakdolabi.repository
 
 import android.content.Context
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
-import com.google.firebase.firestore.*
+import com.bilsem.mutfakdolabi.helpers.DatabaseHelper
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 object FirestoreRepository {
 

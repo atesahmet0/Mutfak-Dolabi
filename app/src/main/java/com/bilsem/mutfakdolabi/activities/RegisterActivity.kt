@@ -1,12 +1,12 @@
 package com.bilsem.mutfakdolabi.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import com.bilsem.mutfakdolabi.objects.Kisi
+import androidx.appcompat.app.AppCompatActivity
 import com.bilsem.mutfakdolabi.R
-import com.bilsem.mutfakdolabi.helper.DatabaseHelper
+import com.bilsem.mutfakdolabi.helpers.DatabaseHelper
+import com.bilsem.mutfakdolabi.objects.Kisi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
