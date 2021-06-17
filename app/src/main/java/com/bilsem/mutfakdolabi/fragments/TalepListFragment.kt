@@ -39,6 +39,7 @@ class TalepListFragment : Fragment() {
             intent.putExtra(AyarlarActivty.KEY_FRAGMENT_TO_PUT, TalepEkleFragment.TAG)
             startActivity(intent)
         }
+
         return view
     }
 

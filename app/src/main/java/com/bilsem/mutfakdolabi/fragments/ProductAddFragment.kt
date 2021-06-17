@@ -10,13 +10,17 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.viewmodels.ProductViewModel
 import kotlinx.android.synthetic.main.fragment_product_add.view.*
 
 class ProductAddFragment : DialogFragment() {
     companion object {
         const val TAG = "PRODUCTADDDIALOGFRAGMENT"
     }
+
+    val productViewModel: ProductViewModel by activityViewModels()
 
     override fun onStart() {
         super.onStart()
@@ -44,4 +48,5 @@ class ProductAddFragment : DialogFragment() {
         view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
         return view
     }
+
 }

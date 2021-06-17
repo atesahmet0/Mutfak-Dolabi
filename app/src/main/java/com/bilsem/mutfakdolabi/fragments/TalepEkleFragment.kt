@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.objects.Product
+import com.bilsem.mutfakdolabi.viewmodels.ProductViewModel
 import kotlinx.android.synthetic.main.fragment_talep_ekle.view.*
 
 class TalepEkleFragment : Fragment() {
@@ -14,6 +18,9 @@ class TalepEkleFragment : Fragment() {
     companion object {
         const val TAG = "TALEPEKLEFRAGMENT"
     }
+
+    val productList = arrayListOf<Product>()
+    private val productViewModel: ProductViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,5 +35,11 @@ class TalepEkleFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        productViewModel.selectedItem.observe(viewLifecycleOwner, Observer { product ->
+
+        })
+    }
 }

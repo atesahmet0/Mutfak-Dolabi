@@ -1,10 +1,10 @@
 package com.bilsem.mutfakdolabi.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bilsem.mutfakdolabi.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
     val ERROR_GECERSIZ_ADRESLER = "Eposta veya Sifre hatali"
     val ERROR_EPOSTA_ONAYSIZ="Lutfen eposta adresinizi onaylayiniz"
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -24,7 +25,6 @@ class LoginActivity : AppCompatActivity() {
         mauth= FirebaseAuth.getInstance()
         mainActivityIntent=Intent(this,MainActivity::class.java)
         registerActivityIntent=Intent(this,RegisterActivity::class.java)
-
         if(mauth.currentUser!=null) {
             startActivity(mainActivityIntent)
             finish()
