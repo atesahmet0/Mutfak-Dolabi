@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.objects.Product
-import com.bilsem.mutfakdolabi.viewmodels.ProductViewModel
+import com.bilsem.mutfakdolabi.viewmodels.ProductAddViewModel
 import kotlinx.android.synthetic.main.fragment_talep_ekle.view.*
 
 class TalepEkleFragment : Fragment() {
@@ -20,7 +20,7 @@ class TalepEkleFragment : Fragment() {
     }
 
     val productList = arrayListOf<Product>()
-    private val productViewModel: ProductViewModel by activityViewModels()
+    private val productViewModel: ProductAddViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

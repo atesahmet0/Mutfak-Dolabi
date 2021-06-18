@@ -15,7 +15,7 @@ import androidx.fragment.app.activityViewModels
 import com.bilsem.mutfakdolabi.R
 import com.bilsem.mutfakdolabi.helpers.InputUtils
 import com.bilsem.mutfakdolabi.objects.Product
-import com.bilsem.mutfakdolabi.viewmodels.ProductViewModel
+import com.bilsem.mutfakdolabi.viewmodels.ProductAddViewModel
 import kotlinx.android.synthetic.main.fragment_product_add.view.*
 
 class ProductAddFragment : DialogFragment() {
@@ -23,7 +23,7 @@ class ProductAddFragment : DialogFragment() {
         const val TAG = "PRODUCTADDDIALOGFRAGMENT"
     }
 
-    val productViewModel: ProductViewModel by activityViewModels()
+    val productViewModel: ProductAddViewModel by activityViewModels()
 
     override fun onStart() {
         super.onStart()
@@ -47,9 +47,11 @@ class ProductAddFragment : DialogFragment() {
         val measurementUnits = Product.MeasurementUnit.values()
 
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, measurementUnits)
+
         (view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText as? AutoCompleteTextView)?.setAdapter(
             adapter
         )
+
         view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
         view.buttonFragmentProductAddDone.setOnClickListener {
             val productName = view.textInputLayoutFragmentProductAddTitle.editText?.text
@@ -76,7 +78,14 @@ class ProductAddFragment : DialogFragment() {
 
             if (error) return@setOnClickListener
 
-
+            productViewModel.setProduct(
+                Product(
+                    productName.toString(),
+                    productAmount.toString().toInt(),
+                    measurementUnit = Product.MeasurementUnit.fromString(measurementUnit.toString())!!
+                )
+            )
+            dialog!!.dismiss()
         }
         return view
     }
@@ -98,5 +107,6 @@ class ProductAddFragment : DialogFragment() {
             }
         }
     }
+
 
 }

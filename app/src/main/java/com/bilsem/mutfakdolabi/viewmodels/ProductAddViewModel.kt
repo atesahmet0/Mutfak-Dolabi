@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bilsem.mutfakdolabi.objects.Product
 
-class ProductViewModel : ViewModel() {
+class ProductAddViewModel : ViewModel() {
     private val mutableSelectedProduct = MutableLiveData<Product>()
     val selectedItem: LiveData<Product> get() = mutableSelectedProduct
 

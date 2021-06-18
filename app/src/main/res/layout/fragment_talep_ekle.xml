@@ -112,13 +112,4 @@
         app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="4dp"
-        android:background="?attr/dividerHorizontal"
-        app:layout_constraintBottom_toTopOf="@id/buttonFragmentTalepEkleAddProduct"
-        app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
-        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutFragmentTalepEkleDescriptionOfTalep" />
 </androidx.constraintlayout.widget.ConstraintLayout>
