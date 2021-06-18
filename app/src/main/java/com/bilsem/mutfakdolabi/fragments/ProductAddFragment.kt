@@ -9,9 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.helpers.InputUtils
+import com.bilsem.mutfakdolabi.objects.Product
 import com.bilsem.mutfakdolabi.viewmodels.ProductViewModel
 import kotlinx.android.synthetic.main.fragment_product_add.view.*
 
@@ -40,14 +43,60 @@ class ProductAddFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_add, container, false)
-        val items = listOf("Adet", "Kg", "Litre", "Gram")
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+
+        val measurementUnits = Product.MeasurementUnit.values()
+
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, measurementUnits)
         (view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText as? AutoCompleteTextView)?.setAdapter(
             adapter
         )
         view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
+        view.buttonFragmentProductAddDone.setOnClickListener {
+            val productName = view.textInputLayoutFragmentProductAddTitle.editText?.text
+            val productAmount = view.textInputLayoutFragmentProductAddAmount.editText?.text as Int
+            val measurementUnit =
+                view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText?.text
 
+            var error = false
+            if (productName == null || productName.length < InputUtils.PRODUCT_NAME_MIN_LENGTH) {
+                view.textInputLayoutFragmentProductAddTitle.error =
+                    "En az ${InputUtils.PRODUCT_NAME_MIN_LENGTH} karakter giriniz"
+                error = true
+            }
+            if (productAmount < 0) {
+                view.textInputLayoutFragmentProductAddAmount.error = "Miktar giriniz"
+                error = true
+            }
+            if (measurementUnit == null) {
+                view.exposedDropdownMenuFragmentProductAddMeasurementUnit.error =
+                    "Bir birim seciniz"
+                error = true
+            }
+            implementErrorOnViews(view)
+
+            if (error) return@setOnClickListener
+
+
+        }
         return view
+    }
+
+    private fun implementErrorOnViews(view: View) {
+        view.textInputLayoutFragmentProductAddAmount.editText?.addTextChangedListener {
+            if (it != null && it.toString().toInt() > 0) {
+                view.textInputLayoutFragmentProductAddAmount.error = null
+            }
+        }
+        view.textInputLayoutFragmentProductAddTitle.editText?.addTextChangedListener {
+            if (it != null && it.length > InputUtils.PRODUCT_NAME_MIN_LENGTH) {
+                view.textInputLayoutFragmentProductAddTitle.error = null
+            }
+        }
+        view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText?.addTextChangedListener {
+            if (it != null) {
+                view.exposedDropdownMenuFragmentProductAddMeasurementUnit.error = null
+            }
+        }
     }
 
 }

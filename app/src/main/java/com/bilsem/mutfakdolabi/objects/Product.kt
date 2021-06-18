@@ -24,6 +24,11 @@ data class Product(
             override fun toString(): String {
                 return "Adet"
             }
+        },
+        KG {
+            override fun toString(): String {
+                return "Kg"
+            }
         }
     }
 }
