@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bilsem.mutfakdolabi.R
+import com.bilsem.mutfakdolabi.adapters.RecyclerViewAdapterProduct
 import com.bilsem.mutfakdolabi.objects.Product
 import com.bilsem.mutfakdolabi.viewmodels.ProductAddViewModel
 import kotlinx.android.synthetic.main.fragment_talep_ekle.view.*
@@ -19,8 +21,9 @@ class TalepEkleFragment : Fragment() {
         const val TAG = "TALEPEKLEFRAGMENT"
     }
 
-    val productList = arrayListOf<Product>()
+    private val productList = arrayListOf<Product>()
     private val productViewModel: ProductAddViewModel by activityViewModels()
+    private val recyclerViewAdapterProduct = RecyclerViewAdapterProduct(productList)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +35,10 @@ class TalepEkleFragment : Fragment() {
             val fragment = ProductAddFragment()
             fragment.show(childFragmentManager, ProductAddFragment.TAG)
         }
+        view.recyclerViewFragmentTalepEkleProductList.layoutManager =
+            LinearLayoutManager(requireContext())
+        view.recyclerViewFragmentTalepEkleProductList.adapter = recyclerViewAdapterProduct
+
         return view
     }
 
@@ -39,7 +46,8 @@ class TalepEkleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         productViewModel.selectedItem.observe(viewLifecycleOwner, Observer { product ->
-
+            productList.add(product)
+            recyclerViewAdapterProduct.notifyItemInserted(productList.size)
         })
     }
 }
