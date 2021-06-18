@@ -53,7 +53,7 @@ class ProductAddFragment : DialogFragment() {
         view.buttonFragmentProductAddCancel.setOnClickListener { dialog?.dismiss() }
         view.buttonFragmentProductAddDone.setOnClickListener {
             val productName = view.textInputLayoutFragmentProductAddTitle.editText?.text
-            val productAmount = view.textInputLayoutFragmentProductAddAmount.editText?.text as Int
+            val productAmount = view.textInputLayoutFragmentProductAddAmount.editText?.text
             val measurementUnit =
                 view.exposedDropdownMenuFragmentProductAddMeasurementUnit.editText?.text
 
@@ -63,7 +63,7 @@ class ProductAddFragment : DialogFragment() {
                     "En az ${InputUtils.PRODUCT_NAME_MIN_LENGTH} karakter giriniz"
                 error = true
             }
-            if (productAmount < 0) {
+            if (productAmount == null || productAmount.isBlank()) {
                 view.textInputLayoutFragmentProductAddAmount.error = "Miktar giriniz"
                 error = true
             }
@@ -83,7 +83,7 @@ class ProductAddFragment : DialogFragment() {
 
     private fun implementErrorOnViews(view: View) {
         view.textInputLayoutFragmentProductAddAmount.editText?.addTextChangedListener {
-            if (it != null && it.toString().toInt() > 0) {
+            if (it != null && !it.toString().isBlank() && it.toString().toInt() > 0) {
                 view.textInputLayoutFragmentProductAddAmount.error = null
             }
         }
