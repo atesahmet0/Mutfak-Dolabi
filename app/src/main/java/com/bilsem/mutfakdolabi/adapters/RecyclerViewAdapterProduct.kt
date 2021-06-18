@@ -16,7 +16,7 @@ class RecyclerViewAdapterProduct(val productList: List<Product>) :
         fun bindView(product: Product) {
             itemView.textViewRecyclerViewProductItemTitle.text = product.title
             itemView.textViewRecyclerViewProductItemAmount.text =
-                "${product.title} ${product.measurementUnit}"
+                "${product.amountsToGet} ${product.measurementUnit}"
         }
     }
 
