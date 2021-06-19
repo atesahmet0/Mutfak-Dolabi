@@ -101,7 +101,7 @@ class TalepEkleFragment : Fragment() {
         groupsOfCurrenUser.forEach { groupsId.add(it.baslik) }
 
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, groupsId)
-        (view?.exposedDropdownMenuFragmentTalepEkleGroupSelect.editText!! as AutoCompleteTextView).setAdapter(
+        (view.exposedDropdownMenuFragmentTalepEkleGroupSelect.editText as? AutoCompleteTextView)?.setAdapter(
             adapter
         )
 
