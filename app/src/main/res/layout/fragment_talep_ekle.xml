@@ -41,7 +41,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFragmentTalepEkleTitleOfTalep">
@@ -51,8 +50,8 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:hint="@string/aciklama"
-            android:maxLines="4"
             android:maxLength="255"
+            android:maxLines="4"
             android:minLines="4" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,6 +60,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
         app:layout_constraintTop_toTopOf="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalTop">
@@ -92,7 +92,7 @@
         android:text="@string/istek_urun_ekle"
         app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFragmentTalepEkleDescriptionOfTalep" />
+        app:layout_constraintTop_toBottomOf="@+id/exposedDropdownMenuFragmentTalepEkleGroupSelect" />
 
     <Button
         android:id="@+id/buttonFragmentTalepEkleTamam"
@@ -103,6 +103,23 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineFragmentTalepEkleTextInputLayoutHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/exposedDropdownMenuFragmentTalepEkleGroupSelect"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutFragmentTalepEkleDescriptionOfTalep">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+    </com.google.android.material.textfield.TextInputLayout>
 
     <View
         android:layout_width="0dp"
