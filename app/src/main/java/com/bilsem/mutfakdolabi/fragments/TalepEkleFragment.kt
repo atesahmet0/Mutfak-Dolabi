@@ -49,7 +49,6 @@ class TalepEkleFragment : Fragment() {
             LinearLayoutManager(requireContext())
         view.recyclerViewFragmentTalepEkleProductList.adapter = recyclerViewAdapterProduct
 
-        setupDropdownMenu(view)
         view.buttonFragmentTalepEkleTamam.setOnClickListener {
             val ordertTitle =
                 view.textInputLayoutFragmentTalepEkleTitleOfTalep.editText?.text.toString()
@@ -63,8 +62,10 @@ class TalepEkleFragment : Fragment() {
         return view
     }
 
-    private fun setupDropdownMenu(view: View?) {
+    private fun setupDropdownMenu() {
         val groupsOfCurrenUser = arrayListOf<Grup>()
+        val groupsId = arrayListOf<String>()
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, groupsId)
         val reg0 =
             FirestoreRepository.getGroupsOfCurrentUserById(FirebaseAuth.getInstance().currentUser.uid)
                 .addSnapshotListener { value, error ->
@@ -87,6 +88,8 @@ class TalepEkleFragment : Fragment() {
                                                 )
                                             )
                                         )
+                                        groupsId.add(it.result!!.getString(DatabaseHelper.GROUP_NAME)!!)
+                                        adapter.notifyDataSetChanged()
                                     }
                             }
 
@@ -97,11 +100,8 @@ class TalepEkleFragment : Fragment() {
                         }
                 }
         listenersToRemove.add(reg0)
-        val groupsId = arrayListOf<String>()
-        groupsOfCurrenUser.forEach { groupsId.add(it.baslik) }
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, groupsId)
-        (view.exposedDropdownMenuFragmentTalepEkleGroupSelect.editText as? AutoCompleteTextView)?.setAdapter(
+        (requireView().exposedDropdownMenuFragmentTalepEkleGroupSelect.editText as? AutoCompleteTextView)?.setAdapter(
             adapter
         )
 
@@ -114,6 +114,7 @@ class TalepEkleFragment : Fragment() {
             productList.add(product)
             recyclerViewAdapterProduct.notifyItemInserted(productList.size)
         })
+        setupDropdownMenu()
     }
 
     override fun onStop() {

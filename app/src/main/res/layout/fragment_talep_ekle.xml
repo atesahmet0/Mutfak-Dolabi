@@ -114,9 +114,10 @@
         app:layout_constraintStart_toStartOf="@id/guidelineFragmentTalepEkleTextInputLayoutVerticalStart"
         app:layout_constraintTop_toBottomOf="@id/textInputLayoutFragmentTalepEkleDescriptionOfTalep">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Gruplar"
             android:inputType="none"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
